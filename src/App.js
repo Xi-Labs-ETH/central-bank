@@ -144,6 +144,7 @@ function App() {
     }
   }
 
+  // Get the token balance for an address
   const fetchBalance = async (address) => {
     if (typeof window.ethereum !== 'undefined') {
       const contract = setContract(setProvider());
@@ -156,12 +157,14 @@ function App() {
     }
   }
 
+  // Get the current user's balance
   const fetchUserBalance = async () => {
     if (!userAddress) return;
     const balance = await fetchBalance(userAddress);
     setUserBalance(balance);
   }
 
+  // Toggle the contract paused or unpaused
   const pauseToggle = async () => {
     if (!userAddress) return;
     if (typeof window.ethereum !== 'undefined') {
@@ -180,6 +183,7 @@ function App() {
     }
   }
 
+  // Create more tokens and send them to an address
   const mintTokens = async (address, amount) => { 
     if (!userAddress) return;
     if (typeof window.ethereum !== 'undefined') {
@@ -191,6 +195,7 @@ function App() {
     }
   }
 
+  // Burn tokens from the current users address
   const burnTokens = async (amount) => { 
     if (!userAddress) return;
     if (typeof window.ethereum !== 'undefined') {
@@ -202,6 +207,7 @@ function App() {
     }
   }
 
+  // Burn tokens from another address that has given allowance permission
   const burnTokensAddress = async (address, amount) => { 
     if (!userAddress) return;
     if (typeof window.ethereum !== 'undefined') {
@@ -213,6 +219,7 @@ function App() {
     }
   }
 
+  // Run one of the two burn functions depending on if an address is specified
   const burnHandler = async () => {
     if (!userAddress) return; 
     if (!burnTargetAddress) {
@@ -223,6 +230,7 @@ function App() {
     updateBalances();
   }
 
+  // Transfer tokens from the current users wallet to another wallet
   const transfer = async (address, amount) => {
     if (!userAddress) return;
     if (typeof window.ethereum !== 'undefined') {
@@ -234,6 +242,7 @@ function App() {
     }
   }
 
+  // Update the total supply and the current user's balance
   const updateBalances = () => {
     fetchTotalSupply();
     if (userAddress) {
@@ -241,6 +250,7 @@ function App() {
     }
   }
 
+  // Load everything 
   useEffect(() => {
     fetchName();
     fetchSymbol();
@@ -314,7 +324,6 @@ function App() {
         <h2>DANGER ZONE</h2>
         <Button color="red" onClick={pauseToggle}>Pause Token</Button>
 
-        
       </div>
 
     </div>
