@@ -20,3 +20,7 @@ There's a sample Token contract using that Preset in the Contracts folder. You c
 GLHF!
 
 Ping Nat on Twitter if you run into any issues or questions: https://twitter.com/nateliason
+
+### Disclaimer
+
+This is in Alpha, it has not been tested and the code is a mess. Please be careful!
