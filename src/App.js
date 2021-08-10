@@ -185,13 +185,14 @@ function App() {
 
   // Create more tokens and send them to an address
   const mintTokens = async (address, amount) => { 
-    if (!userAddress) return;
+    if (!address) return;
     if (typeof window.ethereum !== 'undefined') {
       const provider = setProvider();
       const signer = provider.getSigner();
       const contract = setContract(signer);
       const transaction = await contract.mint(address, amount);
       await transaction.wait();
+      updateBalances();
     }
   }
 
